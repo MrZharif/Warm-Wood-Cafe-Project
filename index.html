@@ -1,0 +1,151 @@
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warm Wood Cafe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="badge">Est. 2023</span>
+                <h1>Warm Wood Cafe</h1>
+                <p>Rasakan kenyamanan dalam setiap tegukan dan gigitan.</p>
+            </div>
+            
+            <div class="scroll-indicator" onclick="scrollToSection('categories')">
+                <span>Lihat Menu</span>
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="categories" class="section-pad">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mau pesan apa hari ini?</h2>
+                <div class="line"></div>
+            </div>
+            
+            <div class="category-wrapper">
+                <div class="cat-card" onclick="loadMenu('makanan', this)">
+                    <div class="cat-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Makanan</h3>
+                    <p>Hidangan utama & cemilan</p>
+                </div>
+                
+                <div class="cat-card" onclick="loadMenu('minuman', this)">
+                    <div class="cat-icon"><i class="fas fa-coffee"></i></div>
+                    <h3>Minuman</h3>
+                    <p>Kopi & penyegar dahaga</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu-section" class="section-pad hidden-section">
+        <div class="container">
+            <div class="section-header-left">
+                <h3 id="menu-title-text">Daftar Menu</h3>
+                <p>Klik "Tambah" untuk memasukkan ke keranjang</p>
+            </div>
+            
+            <div id="menu-grid" class="menu-grid">
+                </div>
+        </div>
+    </section>
+
+    <section id="status-section" class="section-pad hidden-section">
+        <div class="container">
+            <div class="status-card-wrapper">
+                <div class="receipt-header">
+                    <h3>Pesanan Diterima</h3>
+                    <span class="order-id" id="order-id">#---</span>
+                </div>
+                
+                <div class="receipt-body">
+                    <div class="order-summary-list" id="final-order-list">
+                        </div>
+
+                    <div class="total-row">
+                        <span>Total Bayar:</span>
+                        <strong id="final-total-price">Rp 0</strong>
+                    </div>
+
+                    <hr class="dashed-line">
+
+                    <div class="tracker-box">
+                        <div class="track-step" id="step-1">
+                            <div class="dot"><i class="fas fa-fire"></i></div>
+                            <span>Masak</span>
+                        </div>
+                        <div class="track-line">
+                            <div class="track-fill" id="track-fill"></div>
+                        </div>
+                        <div class="track-step" id="step-2">
+                            <div class="dot"><i class="fas fa-utensils"></i></div>
+                            <span>Plating</span>
+                        </div>
+                        <div class="track-line"></div>
+                        <div class="track-step" id="step-3">
+                            <div class="dot"><i class="fas fa-bell"></i></div>
+                            <span>Siap</span>
+                        </div>
+                    </div>
+
+                    <div class="status-text-box">
+                        <p id="status-desc">Menunggu konfirmasi...</p>
+                        <div class="loading-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="receipt-footer">
+                    <button class="btn-reset" onclick="resetFlow()">Pesan Lagi</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="floating-cart" class="cart-fab hidden" onclick="openCartModal()">
+        <i class="fas fa-shopping-basket"></i>
+        <span id="cart-count" class="cart-badge">0</span>
+    </div>
+
+    <div id="cart-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Keranjang Pesanan</h3>
+                <button class="close-btn" onclick="closeCartModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="cart-items-container">
+                <p class="empty-msg">Keranjang masih kosong.</p>
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <strong id="cart-total-display">Rp 0</strong>
+                </div>
+                <button class="btn-checkout" onclick="processCheckout()">Checkout Sekarang</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast hidden">Item ditambahkan!</div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Warm Wood Cafe.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
